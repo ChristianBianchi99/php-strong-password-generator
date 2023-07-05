@@ -1,14 +1,5 @@
 <?php
-// DICHIARAZIONE FUNZIONE
-function generatePassword($length){
-    $characters= "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'()*+,-./:;<=>?@[\]^_`{|}~'";
-    $password='';
-    for($i = 0; $i < $length; $i++){
-        $password .= $characters[rand(0, (strlen($characters) - 1))];
-    }
-    return $password;
-}
-
+include __DIR__.'/partials/functions.php';
 $response= '';
 
 if(isset($_GET['passwordLength']) && $_GET['passwordLength'] !== ''){
@@ -31,14 +22,14 @@ if(isset($_GET['passwordLength']) && $_GET['passwordLength'] !== ''){
                 <div class="form-content input-group w-100">
                     <form class='d-flex flex-column w-100' action="index.php" method="get">
                         <label for="passwordLength">
-                            Scegli la lunghezza della password da generare
+                            <strong>Scegli la lunghezza della password da generare</strong>
                             <input class='form-control my-3' type="number" name="passwordLength" id="passwordLength">
                         </label>
                         <input class='align-self-center btn btn-primary' type="submit" value="Genera password">
                     </form>
                 </div>
                 <div class="response my-5">
-                    La tua password è : <?php echo $response ?>
+                    <strong>La tua password è :</strong> <?php echo $response ?>
                 </div>
             </div>
         </div>
